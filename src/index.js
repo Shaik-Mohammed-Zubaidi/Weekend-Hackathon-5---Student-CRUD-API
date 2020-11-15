@@ -36,10 +36,10 @@ app.post('/api/student',(req,res)=>{
     studentArray.push({
         id: currid,
         name: receivedStudent.name,
-        currentClass: receivedStudent.currentClass,
+        currentClass: Number(receivedStudent.currentClass),
         division: receivedStudent.division
     });
-    res.send({id:`${currid}`});
+    res.send({id:currid});
     currid++;
 })
 
