@@ -39,7 +39,7 @@ app.post('/api/student',(req,res)=>{
         currentClass: receivedStudent.currentClass,
         division: receivedStudent.division
     });
-    res.send(currid);
+    res.send({id: currid});
     currid++;
 })
 
