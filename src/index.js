@@ -39,7 +39,7 @@ app.post('/api/student',(req,res)=>{
         currentClass: receivedStudent.currentClass,
         division: receivedStudent.division
     });
-    res.send({id:currid});
+    res.send(currid);
     currid++;
 })
 
@@ -60,7 +60,7 @@ app.put('/api/student/:id',(req,res)=>{
         studentArray[studentIndex].name = receivedStudent.name;
     }
     if(receivedStudent.currentClass) {
-        studentArray[studentIndex].currentClass = receivedStudent.currentClass;
+        studentArray[studentIndex].currentClass = Number(receivedStudent.currentClass);
     }
     if(receivedStudent.division) {
         studentArray[studentIndex].division = receivedStudent.division;
