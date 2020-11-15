@@ -39,7 +39,7 @@ app.post('/api/student',(req,res)=>{
         currentClass: receivedStudent.currentClass,
         division: receivedStudent.division
     });
-    res.send({id:`${currid}`});
+    res.send({id:currid});
     currid++;
 })
 
@@ -52,11 +52,20 @@ app.put('/api/student/:id',(req,res)=>{
         res.sendStatus(400);
         return;
     }
-    if(!receivedStudent.name || !receivedStudent.currentClass || !receivedStudent.division){
+    if(Object.keys(receivedStudent).length===0){
         res.sendStatus(400);
         return ;
     }
-    studentArray[studentIndex]= {id,...receivedStudent};
+    if(receivedStudent.name) {
+        studentArray[studentIndex].name = receivedStudent.name;
+    }
+    if(receivedStudent.currentClass) {
+        studentArray[studentIndex].currentClass = receivedStudent.currentClass;
+    }
+    if(receivedStudent.division) {
+        studentArray[studentIndex].division = receivedStudent.division;
+    }
+
     res.send({name: `${receivedStudent.name}`});
 })
 
